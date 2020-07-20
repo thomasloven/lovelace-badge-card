@@ -1,0 +1,118 @@
+x-anchors:
+  desc: &desc
+    type: markdown
+    style: |
+      code {
+        font-size: 8pt;
+        line-height: normal;
+        white-space: pre-wrap;
+        }
+
+title: badge-card
+views:
+  - title: Standard
+    badges:
+      - entity: binary_sensor.updater
+      - entity: binary_sensor.basement_floor_wet
+      - entity: binary_sensor.movement_backyard
+      - entity: mailbox.demomailbox
+      - entity: sensor.outside_temperature
+      - entity: sensor.outside_humidity
+      - entity: sun.sun
+      - entity: light.no_light
+    cards:
+      - type: vertical-stack
+        cards:
+          - <<: *desc
+            content: |
+              ## Default usage
+              Configuration either as string or as object
+              ```
+              type: custom:badge-card
+              badges:
+                - binary_sensor.updater
+                - entity: binary_sensor.basement_floor_wet
+                - entity: binary_sensor.movement_backyard
+                - entity: mailbox.demomailbox
+                - entity: sensor.outside_temperature
+                - entity: sensor.outside_humidity
+                - entity: sun.sun
+              ```
+          - type: custom:badge-card
+            badges:
+              - binary_sensor.updater
+              - entity: binary_sensor.basement_floor_wet
+              - entity: binary_sensor.movement_backyard
+              - entity: mailbox.demomailbox
+              - entity: sensor.outside_temperature
+              - entity: sensor.outside_humidity
+              - entity: sun.sun
+
+      - type: vertical-stack
+        cards:
+          - <<: *desc
+            content: |
+              ## Entity-filter
+              Dynamicaly populated list of badges
+              ```
+              type: entity-filter
+              card:
+                type: custom:badge-card
+              entities:
+                - light.bed_light
+                - light.kitchen_lights
+                - light.ceiling_lights
+              state_filter: ['on']
+              ```
+          - type: horizontal-stack
+            cards:
+              - type: entities
+                entities: &entities
+                  - light.bed_light
+                  - light.kitchen_lights
+                  - light.ceiling_lights
+
+              - type: entity-filter
+                card:
+                  type: custom:badge-card
+                entities: *entities
+                state_filter: ['on']
+
+      - type: vertical-stack
+        cards:
+          - <<: *desc
+            content: |
+              ## Fault case 1
+              No configuration - should throw no error
+              ```
+              type: custom:badge-card
+              ```
+          - type: custom:badge-card
+
+      - type: vertical-stack
+        cards:
+          - <<: *desc
+            content: |
+              ## Fault case 2
+              Empty badge list - should throw no error
+              ```
+              type: custom:badge-card
+              badges:
+              ```
+          - type: custom:badge-card
+            badges:
+
+      - type: vertical-stack
+        cards:
+          - <<: *desc
+            content: |
+              ## Fault case 3
+              Non-existant entity
+              ```
+              type: custom:badge-card
+              badges:
+                - light.no_light
+              ```
+          - type: custom:badge-card
+            badges:
+              - light.no_light
