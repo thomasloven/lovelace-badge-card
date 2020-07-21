@@ -68,4 +68,10 @@ class BadgeCard extends LitElement {
 }
 
 
-customElements.define("badge-card", BadgeCard);
+if(!customElements.get("badge-card")) {
+  customElements.define('badge-card', BadgeCard);
+  const pjson = require('../package.json');
+  console.info(`%cBADGE_CARD ${pjson.version} IS INSTALLED`,
+  "color: green; font-weight: bold",
+  "");
+}
