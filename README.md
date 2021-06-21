@@ -61,7 +61,7 @@ entities:
 state_filter:
   - "on"
 card:
-  type: badge-card
+  type: custom:badge-card
 ```
 
 ### Design process
