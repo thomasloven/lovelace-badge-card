@@ -27,6 +27,7 @@ class BadgeCard extends LitElement {
 
   async _addBadges() {
     const cardHelpers = await window.loadCardHelpers();
+    await this.updateComplete;
     const root = this.shadowRoot.querySelector("#badges");
     if (!root) return;
     while (root.firstChild) {
@@ -63,7 +64,7 @@ class BadgeCard extends LitElement {
 if (!customElements.get("badge-card")) {
   customElements.define("badge-card", BadgeCard);
   console.info(
-    `%cBADGE_CARD ${pjson.version} IS INSTALLED`,
+    `%cBADGE-CARD ${pjson.version} IS INSTALLED`,
     "color: green; font-weight: bold",
     ""
   );
