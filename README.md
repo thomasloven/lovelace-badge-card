@@ -1,5 +1,4 @@
-badge-card
-=================
+# badge-card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
@@ -47,7 +46,6 @@ views:
 
 ![demo screenshot](https://user-images.githubusercontent.com/1299821/88083113-f122d400-cb82-11ea-8239-b5e38674ab14.png)
 
-
 ### Bonus feature
 
 `badge-card` works with entity-filter (or [auto-entities](https://github.com/thomasloven/lovelace-auto-entities)); the following example shows a badge for each light that is turned on:
@@ -61,7 +59,7 @@ entities:
 state_filter:
   - "on"
 card:
-  type: badge-card
+  type: custom:badge-card
 ```
 
 ### Design process
@@ -69,9 +67,8 @@ card:
 On a whim, I decided to livestream how I made this card.
 If you want to see me stuttering through it in a blurred video, it's here:
 
-
 [![Development video](https://img.youtube.com/vi/SwI8zHLP-EU/0.jpg)](https://www.youtube.com/watch?v=SwI8zHLP-EU)
 
-
 ---
+
 <a href="https://www.buymeacoffee.com/uqD6KHCdJ" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
