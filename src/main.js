@@ -1,7 +1,7 @@
-import { LitElement, html, css } from "card-tools/src/lit-element.js";
+import { LitElement, html, css } from "lit";
+import pjson from "../package.json";
 
 class BadgeCard extends LitElement {
-
   static get properties() {
     return {
       hass: {},
@@ -16,9 +16,8 @@ class BadgeCard extends LitElement {
   }
 
   updated(changedProperties) {
-    if(changedProperties.has('hass')) {
-      for(const b of this.badges)
-        b.hass = this.hass;
+    if (changedProperties.has("hass")) {
+      for (const b of this.badges) b.hass = this.hass;
     }
   }
 
@@ -29,21 +28,18 @@ class BadgeCard extends LitElement {
   async _addBadges() {
     const cardHelpers = await window.loadCardHelpers();
     const root = this.shadowRoot.querySelector("#badges");
-    if(!root) return;
-    while(root.firstChild) {
+    if (!root) return;
+    while (root.firstChild) {
       root.removeChild(root.firstChild);
     }
 
-    if(!this._config.entities && !this._config.badges) return;
-    for(const b of this._config.entities || this._config.badges) {
+    if (!this._config.entities && !this._config.badges) return;
+    for (const b of this._config.entities || this._config.badges) {
       const badge = cardHelpers.createBadgeElement(
-        typeof(b) === "string"
-        ? {entity: b}
-        : b
+        typeof b === "string" ? { entity: b } : b
       );
 
-      if(this.hass)
-        badge.hass = this.hass;
+      if (this.hass) badge.hass = this.hass;
 
       root.appendChild(badge);
       this.badges.push(badge);
@@ -51,27 +47,24 @@ class BadgeCard extends LitElement {
   }
 
   render() {
-    return html`
-    <div id="badges"></div>
-    `;
+    return html` <div id="badges"></div> `;
   }
 
   static get styles() {
     return css`
-    #badges {
-      font-size: 85%;
-      text-align: center;
-    }
+      #badges {
+        font-size: 85%;
+        text-align: center;
+      }
     `;
   }
-
 }
 
-
-if(!customElements.get("badge-card")) {
-  customElements.define('badge-card', BadgeCard);
-  const pjson = require('../package.json');
-  console.info(`%cBADGE_CARD ${pjson.version} IS INSTALLED`,
-  "color: green; font-weight: bold",
-  "");
+if (!customElements.get("badge-card")) {
+  customElements.define("badge-card", BadgeCard);
+  console.info(
+    `%cBADGE_CARD ${pjson.version} IS INSTALLED`,
+    "color: green; font-weight: bold",
+    ""
+  );
 }
