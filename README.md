@@ -1,6 +1,6 @@
 # badge-card
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
 
 Place [badges](https://www.home-assistant.io/lovelace/dashboards-and-views/#state-label-badge) anywhere you'd like - not just at the top of the view, and even in panel-mode views.
 <DESCRIPTION>.
