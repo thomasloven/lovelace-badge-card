@@ -2,5 +2,9 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       #badges {
         font-size: 85%;
         text-align: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
       }
     `}}customElements.get("badge-card")||(customElements.define("badge-card",nt),console.info(`%cBADGE-CARD ${it} IS INSTALLED`,"color: green; font-weight: bold",""));
