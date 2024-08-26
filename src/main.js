@@ -54,8 +54,15 @@ class BadgeCard extends LitElement {
   static get styles() {
     return css`
       #badges {
-        font-size: 85%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
         text-align: center;
+      }
+
+      #badges > * {
+        padding-bottom: 8px;
       }
     `;
   }
